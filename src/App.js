@@ -1,24 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: "Vinicius"
-    };
-  }
+  state = {
+    name: "Vinicius",
+    posts: [
+      {
+        id: 1,
+        title: 'O título 1',
+        body: 'O corpo 1'
+      },
+      {
+        id: 2,
+        title: 'O título 2',
+        body: 'O corpo 2'
+      },
+      {
+        id: 3,
+        title: 'O título 3',
+        body: 'O corpo 3'
+      },
+    ]
+  };
+
 
   handleHClick = () => {
     const name = this.state.name
-    if(name === "Vinicius"){
+    if (name === "Vinicius") {
       this.setState({ name: "Dias" })
     }
-    if(name === "Dias"){
+    if (name === "Dias") {
       this.setState({ name: "Santos" })
     }
-    if(name === "Santos"){
+    if (name === "Santos") {
       this.setState({ name: "Vinicius" })
     }
   }
@@ -26,23 +40,18 @@ class App extends Component {
   render() {
 
     const { name } = this.state
-
+    const { posts } = this.state
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 onClick={this.handleHClick}>
-            {name}
-          </h1>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-        </a>
-        </header>
+        <h1 onClick={this.handleHClick}>
+          {name}
+        </h1>
+        {posts.map(post => (
+          <div key={post.id}>
+            <h2 >{post.title}</h2>
+            <p>{post.body}</p>
+          </div>
+        ))}
       </div>
     );
   }
