@@ -37,6 +37,14 @@ class App extends Component {
     }
   }
 
+  componentDidMount() { 
+    const {posts, counter} = this.state;
+    posts[0].title = "O título mudou, kek!"
+
+    setTimeout(()=> {
+      this.setState({})
+    }, 5000)
+   }
   render() {
 
     const { name } = this.state
