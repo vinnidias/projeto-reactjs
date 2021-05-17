@@ -1,7 +1,13 @@
-export const Button = ({title, onClick}) => {
+import './style.css'
+
+export const Button = ({ title, onClick, disabled }) => {
 	return (
-       <button onClick={onClick}>
-				 {title}
-			 </button>
-   )
+		<button
+			className="button"
+			onClick={onClick}
+			disabled={disabled}
+		>
+			{title}
+		</button>
+	)
 }
